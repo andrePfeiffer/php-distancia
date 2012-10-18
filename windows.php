@@ -1,0 +1,1 @@
+<?php echo 'Este arquivo foi feito no windows'; ?>
