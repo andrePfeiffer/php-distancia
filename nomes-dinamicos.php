@@ -2,5 +2,5 @@
 
 $variavel = 'nome dinamico';
 $nome = 'variavel';
-echo $nome;
+echo $$nome;
 
