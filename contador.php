@@ -2,7 +2,6 @@
 header('Content-Type: text/html; charset=utf-8');
 
 require_once 'funcoes/data-por-extenso.inc.php';
-require_once 'funcoes/data-por-extenso.inc.php';
 
 $fim_do_mundo = mktime(0, 0, 0, 12, 21, 2012);
 $fim_do_mundo_segundos = $fim_do_mundo - time();
