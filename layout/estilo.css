@@ -1,0 +1,94 @@
+body{
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Arial, sans-serif;
+    font-size: 14px;
+    background-color: #000;
+    color: #fff;
+    padding: 0;
+    margin: 0;
+}
+a{
+    color: #09c;
+}
+#site{
+    width: 1000px;
+    margin: 0 auto;
+}
+#sombra{
+    position: relative;
+    float: left;
+    width: 1000px;
+    box-shadow: 0px 0px 20px 10px #fff;
+}
+#topo{
+    position: relative;
+    float: left;
+    width: 1000px;
+    background-color: #f63;
+    height: 80px;
+}
+#topo #nome-do-site{
+    position: relative;
+    float: left;
+    font-size: 20px;
+    margin: 25px 10px;
+}
+#main-wrapper{
+    position: relative;
+    float: left;
+    background-color: #fff;
+    background-image: url("main-wrapper-fundo.gif");
+    width: 1000px;
+}
+#menu{
+    position: relative;
+    float: left;
+    background-color: #09c;
+    width: 200px;    
+    min-height: 600px;
+}
+#menu ul{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+#menu ul li a{
+    display: block;
+    text-decoration: none;
+    color: #fff;
+    width: 190px;
+    background-color: #f63;
+    margin: 5px;
+    text-align: center;
+    padding: 5px 0px;
+    border-radius: 0px 5px 0px 0px;
+}
+#menu ul li a:hover{
+    background-color: #fff;
+    color: #000;
+}
+#conteudo{
+    position: relative;
+    float: left;
+    background-color: #fff;
+    color: #000;
+    width: 780px;
+    padding: 10px;
+    min-height: 600px;
+}
+#rodape{
+    position: fixed;
+    bottom: 0px;
+    float: left;
+    width: 100%;
+    background-color: #999;
+    text-align: center;
+    padding: 10px 0px;
+}
+#rodape a{
+    color: #fff;
+    text-decoration: none;
+}
+#fotos-noticia{
+    width: 100px;
+    float: right;
+}
