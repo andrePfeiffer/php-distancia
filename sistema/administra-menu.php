@@ -1,6 +1,28 @@
 <?php
+/**
+ * 
+ * gera o select para o campo ordem
+ * 
+ * @param type $ordem
+ * @return string
+ */
+function select_ordem($ordem = 0){
+    $saida = '';
+    $saida .= '<select name="ordem">';
+    for($i = -10; $i <= 10; $i++){
+        $saida .= '<option value="' . $i . '"';
+        if($i == $ordem){ 
+            $saida .= 'selected'; 
+        }
+        $saida .= '>' . $i . '</option>';
+    }
+    $saida .= '</select>';
+    return $saida;
+}
+
 require_once 'servidor.php';
 
+// deleta um item do menu
 if(isset($_GET['acao'])){
     if($_GET['acao'] == 'deletar'){
         $id = (int)$_GET['id'];
@@ -9,7 +31,7 @@ if(isset($_GET['acao'])){
     }
 }
 
-
+// recebe os dados do formulário
 if(isset($_GET['nome'])){
     $nome = $_GET['nome'];
     $url = $_GET['url'];
@@ -24,6 +46,9 @@ if(isset($_GET['nome'])){
     }
     
     if(empty($aviso)){
+        // verifica se esta recebendo o id do formulario
+        // se tiver edita o registro
+        // se não tiver cadastra um novo registro
         if(!empty($_GET['id'])){
             $id = (int)$_GET['id'];
             consulta_dados("update links set nome = '$nome', url = '$url', ordem = '$ordem' where id = $id");
@@ -35,21 +60,8 @@ if(isset($_GET['nome'])){
     }
 }
 
+// busca os itens cadastrados no banco para mostrar na tela
 $itensQuery = consulta_dados("select * from links order by ordem asc");
-
-function select_ordem($ordem = 0){
-    $saida = '';
-    $saida .= '<select name="ordem">';
-    for($i = -10; $i <= 10; $i++){
-        $saida .= '<option value="' . $i . '"';
-        if($i == $ordem){ 
-            $saida .= 'selected'; 
-        }
-        $saida .= '>' . $i . '</option>';
-    }
-    $saida .= '</select>';
-    return $saida;
-}
 ?>
 <!DOCTYPE html>
 <html>
@@ -78,6 +90,7 @@ function select_ordem($ordem = 0){
                 <th>ordem</th>
                 <th>ações</th>
             </tr>
+            <?php // mostra os registros do banco ?>
             <?php while($itens = mysqli_fetch_array($itensQuery)): ?>
                 <tr>
                     <form action="administra-menu.php" method="get">
@@ -92,6 +105,8 @@ function select_ordem($ordem = 0){
                     </form>
                 </tr>
             <?php endwhile; ?>
+                
+            <?php // formulário para cadastro de um novo item ?>
             <tr>
                 <form action="administra-menu.php" method="get">
                     <td><input type="text" name="nome" /></td>
