@@ -1,3 +1,7 @@
+<?php
+require_once 'servidor.php';
+$itensQuery = consulta_dados("select * from links order by ordem asc");
+?>
         <div id="site">
             <div id="sombra">
                 <div id="topo">
@@ -6,10 +10,13 @@
                 <div id="main-wrapper">
                     <div id="menu">
                         <ul>
-                            <li><a href="#">item 1</a></li>
-                            <li><a href="#">item 2</a></li>
-                            <li><a href="#">item 3</a></li>
-                            <li><a href="#">item 4</a></li>
+                            <?php while($itens = mysqli_fetch_array($itensQuery)): ?>
+                                <li>
+                                    <a href="<?php print $itens['url']; ?>">
+                                        <?php print $itens['nome']; ?>
+                                    </a>
+                                </li>
+                            <?php endwhile; ?>
                         </ul>
                     </div>
                     <div id="conteudo">
