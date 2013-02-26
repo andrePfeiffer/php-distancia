@@ -1,4 +1,8 @@
-<?php
+<?php session_start();
+
+if(isset($_SESSION['usuario']['id'])){
+    if($_SESSION['usuario']['status'] > 0){
+        
 /**
  * 
  * gera o select para o campo ordem
@@ -122,3 +126,11 @@ $itensQuery = consulta_dados("select * from links order by ordem asc");
         <?php include_once 'menu2.php'; ?>
     </body>
 </html>
+<?php
+    }else{
+        header("Location: login.php?msg=semAcesso");
+    }
+}else{
+    header("Location: login.php?msg=semAcesso");
+}
+?>

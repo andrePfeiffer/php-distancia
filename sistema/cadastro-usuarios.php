@@ -1,13 +1,7 @@
 <?php
-function verifica_login($login){
-    require_once 'servidor.php';
-    $jaTemLogin = consulta_dados("select id from usuarios where login = '$login'");
-    if(mysqli_num_rows($jaTemLogin) > 0){
-        return false;
-    }else{
-        return true;
-    }    
-}
+
+require_once 'funcoes/verifica_login.inc.php';
+require_once 'funcoes/codifica_senha.inc.php';
 
 if(isset($_POST['nome'])){
     $nome = $_POST['nome'];
@@ -28,7 +22,7 @@ if(isset($_POST['nome'])){
     }
     if(empty($login)){
        $aviso .= 'O login é um campo obrigatório<br />'; 
-    }elseif(!verifica_login($login)){
+    }elseif(verifica_login($login)){
         $aviso .= 'O login já existe<br />';
     }
     if(empty($senha)){
@@ -38,8 +32,7 @@ if(isset($_POST['nome'])){
     }
     
     if(empty($aviso)){
-        $fraseSecreta = 'aopdjasd8as90udaskdsakdjaskl dasij sdasdsa';
-        $senhaCodificada = hash('sha512', $fraseSecreta . $senha);
+        $senhaCodificada = codifica_senha($senha);
         
         $token = md5($fraseSecreta . $email);
         $body = "Favor confirme o seu cadastro clicando no link abaixo\n";
