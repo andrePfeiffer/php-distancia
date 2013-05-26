@@ -52,7 +52,7 @@ if(isset($_POST['email'])){
             <label for="email">Email:</label>
             <input type="email" name="email" id="email" />
             <br />
-            <input type="submit" value="login" />
+            <input type="submit" value="recuperar senha" />
         </form>
         <?php include_once 'menu2.php'; ?>
       <?php endif; ?>
